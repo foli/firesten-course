@@ -25,8 +25,12 @@ export namespace Components {
   interface PageAuth {}
   interface PageAuthAttributes extends StencilHTMLAttributes {}
 
-  interface PageHome {}
-  interface PageHomeAttributes extends StencilHTMLAttributes {}
+  interface PageHome {
+    'user': firebase.User;
+  }
+  interface PageHomeAttributes extends StencilHTMLAttributes {
+    'user'?: firebase.User;
+  }
 
   interface TabsDashboard {}
   interface TabsDashboardAttributes extends StencilHTMLAttributes {}

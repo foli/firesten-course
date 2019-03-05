@@ -1,8 +1,14 @@
 import firebase from 'firebase/app';
 import { auth } from '../firebase';
+import { authState } from 'rxfire/auth';
+import { Observable } from 'rxjs';
 
 export class AuthService {
-	constructor() {}
+	user$: Observable<firebase.User>;
+
+	constructor() {
+		this.user$ = authState(auth);
+	}
 
 	public twitter() {
 		const provider = new firebase.auth.TwitterAuthProvider();
