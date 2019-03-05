@@ -1,13 +1,21 @@
-// create a js class
-export class AuthService {
-	name: string;
+import firebase from 'firebase/app';
+import { auth } from '../firebase';
 
-	constructor() {
-		this.name = 'Flavio';
+export class AuthService {
+	constructor() {}
+
+	public twitter() {
+		const provider = new firebase.auth.TwitterAuthProvider();
+		return this.providerHandler(provider);
 	}
 
-	helloFromService() {
-		return 'AuthService says hello';
+	public google() {
+		const provider = new firebase.auth.GoogleAuthProvider();
+		return this.providerHandler(provider);
+	}
+
+	private providerHandler(provider: any) {
+		return auth.signInWithPopup(provider);
 	}
 }
 // export it as a singleton
