@@ -1,0 +1,21 @@
+{
+	"name": "firesten",
+	"version": "1.0.0",
+	"description": "Stencil/Ionic app with Firebase",
+	"scripts": {
+		"start": "stencil build --dev --watch --serve",
+		"build": "stencil build",
+		"deploy": "stencil build && firebase use dev && firebase deploy",
+		"deploy-prod": "stencil build && firebase use prod && firebase deploy"
+	},
+	"author": "Flavio Oliveira <flavio@foli.dev>",
+	"license": "MIT",
+	"dependencies": {
+		"@ionic/core": "^4.0.2",
+		"firebase": "^5.8.5"
+	},
+	"devDependencies": {
+		"@stencil/core": "^0.18.0",
+		"@stencil/sass": "^0.1.1"
+	}
+}
