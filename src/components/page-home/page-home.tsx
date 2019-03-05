@@ -12,7 +12,8 @@ export class Home {
 		return [
 			<Navbar title='Home' />,
 			<ion-content>
-				<h1>{this.user.email}</h1>
+				<h1>{this.user ? this.user.displayName : undefined}</h1>
+				<p>{this.user ? this.user.uid : undefined}</p>
 			</ion-content>
 		];
 	}
