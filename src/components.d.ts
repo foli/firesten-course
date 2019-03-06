@@ -54,6 +54,15 @@ export namespace Components {
 
   interface TabsRoot {}
   interface TabsRootAttributes extends StencilHTMLAttributes {}
+
+  interface UserList {
+    'header': string;
+    'users': firebase.firestore.DocumentData[];
+  }
+  interface UserListAttributes extends StencilHTMLAttributes {
+    'header'?: string;
+    'users'?: firebase.firestore.DocumentData[];
+  }
 }
 
 declare global {
@@ -67,6 +76,7 @@ declare global {
     'TabsDashboard': Components.TabsDashboard;
     'TabsHome': Components.TabsHome;
     'TabsRoot': Components.TabsRoot;
+    'UserList': Components.UserList;
   }
 
   interface StencilIntrinsicElements {
@@ -79,6 +89,7 @@ declare global {
     'tabs-dashboard': Components.TabsDashboardAttributes;
     'tabs-home': Components.TabsHomeAttributes;
     'tabs-root': Components.TabsRootAttributes;
+    'user-list': Components.UserListAttributes;
   }
 
 
@@ -136,6 +147,12 @@ declare global {
     new (): HTMLTabsRootElement;
   };
 
+  interface HTMLUserListElement extends Components.UserList, HTMLStencilElement {}
+  var HTMLUserListElement: {
+    prototype: HTMLUserListElement;
+    new (): HTMLUserListElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-root': HTMLAppRootElement
     'app-menu': HTMLAppMenuElement
@@ -146,6 +163,7 @@ declare global {
     'tabs-dashboard': HTMLTabsDashboardElement
     'tabs-home': HTMLTabsHomeElement
     'tabs-root': HTMLTabsRootElement
+    'user-list': HTMLUserListElement
   }
 
   interface ElementTagNameMap {
@@ -158,6 +176,7 @@ declare global {
     'tabs-dashboard': HTMLTabsDashboardElement;
     'tabs-home': HTMLTabsHomeElement;
     'tabs-root': HTMLTabsRootElement;
+    'user-list': HTMLUserListElement;
   }
 
 

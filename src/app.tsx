@@ -15,8 +15,6 @@ export class App {
 		authSvc.user$.subscribe(data => {
 			if (data.role.includes('admin')) {
 				this.isAdmin = true;
-			} else {
-				console.log('not authorized');
 			}
 			this.user = data;
 			console.log(data);
@@ -29,7 +27,7 @@ export class App {
 				<ion-router useHash={false}>
 					<ion-route url='/' component='page-home' componentProps={{ user: this.user }} />
 					<ion-route url='/about' component='page-about' />
-					<ion-route url='/admin' component='page-admin' />
+
 					{/* <ion-route url='/auth' component='page-auth' /> */}
 
 					<ion-route url='/home' component='tabs-root'>
@@ -45,6 +43,7 @@ export class App {
 					{/* route guards */}
 
 					{this.user ? <ion-route-redirect from='/auth' to='/home' /> : undefined}
+
 					{this.user && !this.isAdmin ? <ion-route-redirect from='/admin' to='/' /> : undefined}
 				</ion-router>
 				<app-menu user={this.user} />

@@ -48,9 +48,9 @@
    3. Create User Account (Cloud function)
    4. Firebase Rules (Firestore/Storage)
    5. Role based authorisation
-   6. Update
-   7. User List
-   8. User Profile
+   6. User List
+   7. User Profile
+   8. Update
    9. Review
 
 7. Blog Module

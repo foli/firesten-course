@@ -6,10 +6,6 @@ import { Component } from '@stencil/core';
 })
 export class PageAdmin {
 	render() {
-		return (
-			<div>
-				<p>Welcome Admin!</p>
-			</div>
-		);
+		return <h1>Admin page</h1>;
 	}
 }
