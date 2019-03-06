@@ -42,6 +42,12 @@ export namespace Components {
     'user'?: User;
   }
 
+  interface PageUserList {}
+  interface PageUserListAttributes extends StencilHTMLAttributes {}
+
+  interface PageUserProfile {}
+  interface PageUserProfileAttributes extends StencilHTMLAttributes {}
+
   interface TabsDashboard {
     'user': User;
   }
@@ -73,6 +79,8 @@ declare global {
     'PageAdmin': Components.PageAdmin;
     'PageAuth': Components.PageAuth;
     'PageHome': Components.PageHome;
+    'PageUserList': Components.PageUserList;
+    'PageUserProfile': Components.PageUserProfile;
     'TabsDashboard': Components.TabsDashboard;
     'TabsHome': Components.TabsHome;
     'TabsRoot': Components.TabsRoot;
@@ -86,6 +94,8 @@ declare global {
     'page-admin': Components.PageAdminAttributes;
     'page-auth': Components.PageAuthAttributes;
     'page-home': Components.PageHomeAttributes;
+    'page-user-list': Components.PageUserListAttributes;
+    'page-user-profile': Components.PageUserProfileAttributes;
     'tabs-dashboard': Components.TabsDashboardAttributes;
     'tabs-home': Components.TabsHomeAttributes;
     'tabs-root': Components.TabsRootAttributes;
@@ -129,6 +139,18 @@ declare global {
     new (): HTMLPageHomeElement;
   };
 
+  interface HTMLPageUserListElement extends Components.PageUserList, HTMLStencilElement {}
+  var HTMLPageUserListElement: {
+    prototype: HTMLPageUserListElement;
+    new (): HTMLPageUserListElement;
+  };
+
+  interface HTMLPageUserProfileElement extends Components.PageUserProfile, HTMLStencilElement {}
+  var HTMLPageUserProfileElement: {
+    prototype: HTMLPageUserProfileElement;
+    new (): HTMLPageUserProfileElement;
+  };
+
   interface HTMLTabsDashboardElement extends Components.TabsDashboard, HTMLStencilElement {}
   var HTMLTabsDashboardElement: {
     prototype: HTMLTabsDashboardElement;
@@ -160,6 +182,8 @@ declare global {
     'page-admin': HTMLPageAdminElement
     'page-auth': HTMLPageAuthElement
     'page-home': HTMLPageHomeElement
+    'page-user-list': HTMLPageUserListElement
+    'page-user-profile': HTMLPageUserProfileElement
     'tabs-dashboard': HTMLTabsDashboardElement
     'tabs-home': HTMLTabsHomeElement
     'tabs-root': HTMLTabsRootElement
@@ -173,6 +197,8 @@ declare global {
     'page-admin': HTMLPageAdminElement;
     'page-auth': HTMLPageAuthElement;
     'page-home': HTMLPageHomeElement;
+    'page-user-list': HTMLPageUserListElement;
+    'page-user-profile': HTMLPageUserProfileElement;
     'tabs-dashboard': HTMLTabsDashboardElement;
     'tabs-home': HTMLTabsHomeElement;
     'tabs-root': HTMLTabsRootElement;
