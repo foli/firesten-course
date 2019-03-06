@@ -1,12 +1,13 @@
 import { Component, Prop } from '@stencil/core';
 import { authSvc } from '../../services/auth.service';
+import { User } from '../../interfaces/user';
 
 @Component({
 	tag: 'app-menu',
 	styleUrl: 'app-menu.scss'
 })
 export class AppMenu {
-	@Prop() user: firebase.User;
+	@Prop() user: User;
 
 	appPages = [
 		{ title: 'Home', url: '/', icon: 'home' },

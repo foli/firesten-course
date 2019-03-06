@@ -1,16 +1,22 @@
 import { Component, State } from '@stencil/core';
 import { authSvc } from './services/auth.service';
 
+import { User } from './interfaces/user';
+
 @Component({
 	tag: 'app-root'
 })
 export class App {
-	@State() user: firebase.User;
+	@State() user: User;
 
 	componentWillLoad() {
 		authSvc.verifyEmailLink(location.href);
-		authSvc.user$.subscribe(data => (this.user = data));
+		authSvc.user$.subscribe(data => {
+			this.user = data;
+			console.log(data);
+		});
 	}
+
 	render() {
 		return (
 			<ion-app>

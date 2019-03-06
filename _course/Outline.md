@@ -44,7 +44,7 @@
 6. User Management
 
    1. Intro
-   2. Create app user
+   2. App user vs firebase user
    3. Create User Account (Cloud function)
    4. Firebase Rules (Firestore/Storage)
    5. Role based authorisation

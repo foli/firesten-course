@@ -1,13 +1,25 @@
 import firebase from 'firebase/app';
-import { auth } from '../firebase';
+import { auth, firestore } from '../firebase';
 import { authState } from 'rxfire/auth';
-import { Observable } from 'rxjs';
+import { docData } from 'rxfire/firestore';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+import { User } from '../interfaces/user';
 
 export class AuthService {
-	user$: Observable<firebase.User>;
+	user$: Observable<User>;
 
 	constructor() {
-		this.user$ = authState(auth);
+		this.user$ = authState(auth).pipe(
+			switchMap((user: firebase.User) => {
+				if (user) {
+					return docData<User>(firestore.doc(`users/${user.uid}`));
+				} else {
+					return of(null);
+				}
+			})
+		);
 	}
 
 	public sendEmailLink(email: string) {

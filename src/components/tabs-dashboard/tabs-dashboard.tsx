@@ -1,12 +1,13 @@
 import { Component, Prop } from '@stencil/core';
 import { Navbar } from '../functional';
+import { User } from '../../interfaces/user';
 
 @Component({
 	tag: 'tabs-dashboard',
 	styleUrl: 'tabs-dashboard.scss'
 })
 export class TabsDashboard {
-	@Prop() user: firebase.User;
+	@Prop() user: User;
 
 	render() {
 		return [

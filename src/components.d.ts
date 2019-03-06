@@ -9,6 +9,9 @@ import '@stencil/core';
 
 import '@ionic/core';
 import 'ionicons';
+import {
+  User,
+} from './interfaces/user';
 
 
 export namespace Components {
@@ -17,10 +20,10 @@ export namespace Components {
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
   interface AppMenu {
-    'user': firebase.User;
+    'user': User;
   }
   interface AppMenuAttributes extends StencilHTMLAttributes {
-    'user'?: firebase.User;
+    'user'?: User;
   }
 
   interface PageAbout {}
@@ -30,17 +33,17 @@ export namespace Components {
   interface PageAuthAttributes extends StencilHTMLAttributes {}
 
   interface PageHome {
-    'user': firebase.User;
+    'user': User;
   }
   interface PageHomeAttributes extends StencilHTMLAttributes {
-    'user'?: firebase.User;
+    'user'?: User;
   }
 
   interface TabsDashboard {
-    'user': firebase.User;
+    'user': User;
   }
   interface TabsDashboardAttributes extends StencilHTMLAttributes {
-    'user'?: firebase.User;
+    'user'?: User;
   }
 
   interface TabsHome {}
