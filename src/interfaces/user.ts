@@ -3,7 +3,7 @@ export interface User {
 	email: string;
 	photoURL: string;
 	uid: string;
-
+	memberSince: string;
 	bio: string;
 	website: string;
 	twitter: string;
