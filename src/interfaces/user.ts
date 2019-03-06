@@ -8,4 +8,5 @@ export interface User {
 	website: string;
 	twitter: string;
 	github: string;
+	role: string[];
 }

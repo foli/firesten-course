@@ -26,6 +26,8 @@ export class TabsDashboard {
 				) : (
 					undefined
 				)}
+
+				{this.user && this.user.role.includes('admin') ? <h1>Hello Admin</h1> : <h1>Hey ordinary user</h1>}
 			</ion-content>
 		];
 	}

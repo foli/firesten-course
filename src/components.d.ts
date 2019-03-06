@@ -29,6 +29,9 @@ export namespace Components {
   interface PageAbout {}
   interface PageAboutAttributes extends StencilHTMLAttributes {}
 
+  interface PageAdmin {}
+  interface PageAdminAttributes extends StencilHTMLAttributes {}
+
   interface PageAuth {}
   interface PageAuthAttributes extends StencilHTMLAttributes {}
 
@@ -58,6 +61,7 @@ declare global {
     'AppRoot': Components.AppRoot;
     'AppMenu': Components.AppMenu;
     'PageAbout': Components.PageAbout;
+    'PageAdmin': Components.PageAdmin;
     'PageAuth': Components.PageAuth;
     'PageHome': Components.PageHome;
     'TabsDashboard': Components.TabsDashboard;
@@ -69,6 +73,7 @@ declare global {
     'app-root': Components.AppRootAttributes;
     'app-menu': Components.AppMenuAttributes;
     'page-about': Components.PageAboutAttributes;
+    'page-admin': Components.PageAdminAttributes;
     'page-auth': Components.PageAuthAttributes;
     'page-home': Components.PageHomeAttributes;
     'tabs-dashboard': Components.TabsDashboardAttributes;
@@ -93,6 +98,12 @@ declare global {
   var HTMLPageAboutElement: {
     prototype: HTMLPageAboutElement;
     new (): HTMLPageAboutElement;
+  };
+
+  interface HTMLPageAdminElement extends Components.PageAdmin, HTMLStencilElement {}
+  var HTMLPageAdminElement: {
+    prototype: HTMLPageAdminElement;
+    new (): HTMLPageAdminElement;
   };
 
   interface HTMLPageAuthElement extends Components.PageAuth, HTMLStencilElement {}
@@ -129,6 +140,7 @@ declare global {
     'app-root': HTMLAppRootElement
     'app-menu': HTMLAppMenuElement
     'page-about': HTMLPageAboutElement
+    'page-admin': HTMLPageAdminElement
     'page-auth': HTMLPageAuthElement
     'page-home': HTMLPageHomeElement
     'tabs-dashboard': HTMLTabsDashboardElement
@@ -140,6 +152,7 @@ declare global {
     'app-root': HTMLAppRootElement;
     'app-menu': HTMLAppMenuElement;
     'page-about': HTMLPageAboutElement;
+    'page-admin': HTMLPageAdminElement;
     'page-auth': HTMLPageAuthElement;
     'page-home': HTMLPageHomeElement;
     'tabs-dashboard': HTMLTabsDashboardElement;
