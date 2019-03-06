@@ -8,9 +8,9 @@ export class App {
 	@State() user: firebase.User;
 
 	componentWillLoad() {
+		authSvc.verifyEmailLink(location.href);
 		authSvc.user$.subscribe(data => (this.user = data));
 	}
-
 	render() {
 		return (
 			<ion-app>

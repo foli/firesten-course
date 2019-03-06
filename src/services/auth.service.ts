@@ -10,6 +10,39 @@ export class AuthService {
 		this.user$ = authState(auth);
 	}
 
+	public sendEmailLink(email: string) {
+		const actionCodeSettings = {
+			url: 'http://localhost:3333/',
+			handleCodeInApp: true
+		};
+		localStorage.setItem('emailForSignIn', email);
+		return auth.sendSignInLinkToEmail(email, actionCodeSettings);
+	}
+
+	public async verifyEmailLink(url: string) {
+		if (auth.isSignInWithEmailLink(url)) {
+			let email = localStorage.getItem('emailForSignIn');
+			// if no email is found, ask for it again
+			if (!email) {
+				email = window.prompt('Please provide your email for confirmation');
+			}
+			// result: firebase.User
+			const result = await auth.signInWithEmailLink(email, url);
+			console.log('firebaseUser: ', result);
+
+			if (result.additionalUserInfo.isNewUser) {
+				// flow for new users
+				console.log('isUserNew: ', result.additionalUserInfo.isNewUser);
+			}
+
+			if (history && history.replaceState) {
+				history.replaceState({}, document.title, url.split('?')[0]);
+			}
+
+			localStorage.removeItem('emailForSignIn');
+		}
+	}
+
 	public logout() {
 		return auth.signOut();
 	}

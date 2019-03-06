@@ -14,6 +14,18 @@ export class AppMenu {
 		{ title: 'Tabs', url: '/home', icon: 'person' }
 	];
 
+	async openAuthModal() {
+		// initialize controller
+		const modalController = document.querySelector('ion-modal-controller');
+		await modalController.componentOnReady();
+
+		// present the modal
+		const modalElement = await modalController.create({
+			component: 'page-auth'
+		});
+		await modalElement.present();
+	}
+
 	render() {
 		return (
 			<ion-menu side='start' type='overlay' contentId='main'>
@@ -31,13 +43,20 @@ export class AppMenu {
 				</ion-content>
 				<ion-footer>
 					{this.user ? (
-						<ion-button expand='full' onClick={() => authSvc.logout()}>
-							Logout
-						</ion-button>
+						<ion-menu-toggle>
+							<ion-button expand='full' onClick={() => authSvc.logout()}>
+								Logout
+							</ion-button>
+						</ion-menu-toggle>
 					) : (
-						undefined
+						<ion-menu-toggle>
+							<ion-button expand='full' onClick={() => this.openAuthModal()}>
+								Login
+							</ion-button>
+						</ion-menu-toggle>
 					)}
 				</ion-footer>
+				<ion-modal-controller />
 			</ion-menu>
 		);
 	}
