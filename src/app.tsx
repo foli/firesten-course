@@ -17,7 +17,7 @@ export class App {
 				<ion-router useHash={false}>
 					<ion-route url='/' component='page-home' componentProps={{ user: this.user }} />
 					<ion-route url='/about' component='page-about' />
-					<ion-route url='/auth' component='page-auth' />
+					{/* <ion-route url='/auth' component='page-auth' /> */}
 
 					<ion-route url='/home' component='tabs-root'>
 						<ion-route url='/' component='tabs-home'>
