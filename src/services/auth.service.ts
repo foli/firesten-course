@@ -10,6 +10,10 @@ export class AuthService {
 		this.user$ = authState(auth);
 	}
 
+	public logout() {
+		return auth.signOut();
+	}
+
 	public twitter() {
 		const provider = new firebase.auth.TwitterAuthProvider();
 		return this.providerHandler(provider);

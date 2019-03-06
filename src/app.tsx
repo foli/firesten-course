@@ -10,8 +10,8 @@ export class App {
 	componentWillLoad() {
 		authSvc.user$.subscribe(data => (this.user = data));
 	}
+
 	render() {
-		console.log('from app: ', this.user);
 		return (
 			<ion-app>
 				<ion-router useHash={false}>
@@ -25,11 +25,15 @@ export class App {
 						</ion-route>
 
 						<ion-route url='/user' component='tabs-dashboard'>
-							<ion-route component='tabs-dashboard' />
+							<ion-route component='tabs-dashboard' componentProps={{ user: this.user }} />
 						</ion-route>
 					</ion-route>
+
+					{/* route guards */}
+
+					{this.user ? <ion-route-redirect from='/auth' to='/home' /> : undefined}
 				</ion-router>
-				<app-menu />
+				<app-menu user={this.user} />
 
 				<ion-nav id='main' />
 			</ion-app>

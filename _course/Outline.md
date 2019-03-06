@@ -37,7 +37,6 @@
    4. Email link
    5. Add prompt capacitor plugin
    6. Passing data to components
-   7. Routing Guards
    8. Logout and User detail
    9. Auth Modal
    10. Review

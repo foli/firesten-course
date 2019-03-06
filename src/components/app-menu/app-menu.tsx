@@ -1,10 +1,13 @@
-import { Component } from '@stencil/core';
+import { Component, Prop } from '@stencil/core';
+import { authSvc } from '../../services/auth.service';
 
 @Component({
 	tag: 'app-menu',
 	styleUrl: 'app-menu.scss'
 })
 export class AppMenu {
+	@Prop() user: firebase.User;
+
 	appPages = [
 		{ title: 'Home', url: '/', icon: 'home' },
 		{ title: 'About', url: '/about', icon: 'person' },
@@ -26,6 +29,15 @@ export class AppMenu {
 						</ion-menu-toggle>
 					</ion-list>
 				</ion-content>
+				<ion-footer>
+					{this.user ? (
+						<ion-button expand='full' onClick={() => authSvc.logout()}>
+							Logout
+						</ion-button>
+					) : (
+						undefined
+					)}
+				</ion-footer>
 			</ion-menu>
 		);
 	}
