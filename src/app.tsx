@@ -13,7 +13,7 @@ export class App {
 	componentWillLoad() {
 		authSvc.verifyEmailLink(location.href);
 		authSvc.user$.subscribe(data => {
-			if (data.role.includes('admin')) {
+			if (data && data.role.includes('admin')) {
 				this.isAdmin = true;
 			}
 			this.user = data;
