@@ -45,8 +45,8 @@
 
    1. Intro
    2. App user vs firebase user
-   3. Create User Account (Cloud function)
-   4. Firebase Rules (Firestore/Storage)
+   3. Cloud functions auth triggers
+   4. Firebase user security rules
    5. Role based authorisation
    6. User List
    7. User Profile
