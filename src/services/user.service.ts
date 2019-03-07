@@ -1,4 +1,4 @@
-import { collection, collectionData, doc } from 'rxfire/firestore';
+import { collection, collectionData, doc, docData } from 'rxfire/firestore';
 import { firestore } from '../firebase';
 import { tap, map } from 'rxjs/operators';
 
@@ -35,8 +35,12 @@ export class UserService {
 		);
 	}
 
+	// getUser(uid: string) {
+	// 	return doc(firestore.doc(`/users/${uid}`));
+	// }
+
 	getUser(uid: string) {
-		return doc(firestore.doc(`/users/${uid}`));
+		return docData(firestore.doc('users'), uid);
 	}
 }
 export const userSvc = new UserService();
