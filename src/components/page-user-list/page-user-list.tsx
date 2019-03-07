@@ -11,11 +11,14 @@ export class PageUserList {
 	@State() users: firebase.firestore.DocumentData[];
 
 	componentWillLoad() {
-		userSvc.getcollection().subscribe(data => console.log('getcollection: ', data));
-		userSvc.getcollectionData().subscribe(data => {
-			console.log('getcollectionData: ', data);
-			this.users = data;
-		});
+		this.getUsersWithSDK();
+		userSvc.getcollection().subscribe(data => (this.users = data));
+		userSvc.getcollectionData().subscribe(data => (this.users = data));
+	}
+
+	async getUsersWithSDK() {
+		this.users = await userSvc.getWithSDK();
+		console.log('fromSDK: ', this.users);
 	}
 
 	render() {

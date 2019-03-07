@@ -3,19 +3,36 @@ import { firestore } from '../firebase';
 import { tap, map } from 'rxjs/operators';
 
 export class UserService {
+	async getWithSDK() {
+		const usersRef = firestore.collection('users');
+		const usersCol = await usersRef.get();
+		console.log('QueryDocumentSnapshot[] fromSDK: ', usersCol.docs);
+		return usersCol.docs.map(d => {
+			const id = d.id;
+			const data = d.data();
+			return { id, ...data };
+		});
+	}
 	getcollection() {
 		return collection(firestore.collection('users')).pipe(
-			// returns data + metadata
-			tap(data => console.log('before maping: ', data)),
+			tap(data => console.log('QueryDocumentSnapshot[] fromCollection: ', data)),
 			// we can map it to only needed data
-			map(docs => docs.map(d => d.data())),
-			tap(data => console.log('after mapping: ', data))
+			map(docs =>
+				docs.map(d => {
+					const id = d.id;
+					const data = d.data();
+					return { id, ...data };
+				})
+			)
+			// tap(data => console.log('fromCollection: ', data))
 		);
 	}
 
 	getcollectionData() {
 		// just like the above after mapping, only the data and id
-		return collectionData(firestore.collection('users'), 'id');
+		return collectionData(firestore.collection('users'), 'id').pipe(
+			tap(data => console.log('fromCollectionData: ', data))
+		);
 	}
 
 	getUser(uid: string) {
