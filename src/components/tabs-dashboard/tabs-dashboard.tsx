@@ -20,14 +20,19 @@ export class TabsDashboard {
 						</ion-avatar>
 						<ion-label>
 							<h2>{this.user.displayName}</h2>
-							<p>{this.user.email}</p>
+							<p>
+								{this.user.role.toString().toUpperCase()} &bull; {this.user.email}
+							</p>
 						</ion-label>
 					</ion-item>
-				) : (
-					undefined
-				)}
+				) : null}
 
-				{this.user && this.user.role.includes('admin') ? <h1>Hello Admin</h1> : <h1>Hey ordinary user</h1>}
+				{this.user && this.user.role.includes('admin') ? (
+					<ion-item lines='none' margin-top href='/admin'>
+						<ion-icon name='construct' slot='start' />
+						<ion-label>Control Panel</ion-label>
+					</ion-item>
+				) : null}
 			</ion-content>
 		];
 	}

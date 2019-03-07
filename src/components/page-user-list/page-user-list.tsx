@@ -11,7 +11,11 @@ export class PageUserList {
 	@State() users: firebase.firestore.DocumentData[];
 
 	componentWillLoad() {
-		userSvc.getUsers().subscribe(data => (this.users = data));
+		userSvc.getcollection().subscribe(data => console.log('getcollection: ', data));
+		userSvc.getcollectionData().subscribe(data => {
+			console.log('getcollectionData: ', data);
+			this.users = data;
+		});
 	}
 
 	render() {
