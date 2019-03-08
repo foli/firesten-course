@@ -1,6 +1,7 @@
 import { Component, Prop, State } from '@stencil/core';
 import { User } from '../../interfaces/user';
 import { Navbar } from '../functional';
+import { userSvc } from '../../services/user.service';
 
 @Component({
 	tag: 'page-user-update',
@@ -32,16 +33,19 @@ export class PageUserUpdate {
 
 	updatePhotoURL(event: any) {
 		console.log(event.target.files[0]);
+		userSvc.updatePhotoURL(this.user.uid, event.target.files[0]);
 	}
 
-	updateProfile() {
+	async updateProfile() {
 		let payload = {
-			displayName: this.displayName,
-			bio: this.bio,
-			website: this.website,
-			twitter: this.twitter
+			displayName: this.displayName || null,
+			bio: this.bio || null,
+			website: this.website || null,
+			twitter: this.twitter || null
 		};
 		console.log(payload);
+		await userSvc.updateProfile(this.user.uid, payload);
+		console.log('profile has been updated');
 	}
 
 	inputHandler(event: any) {
