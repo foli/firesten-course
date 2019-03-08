@@ -62,12 +62,10 @@ export namespace Components {
   interface TabsRootAttributes extends StencilHTMLAttributes {}
 
   interface UserList {
-    'header': string;
-    'users': firebase.firestore.DocumentData[];
+    'users': User[];
   }
   interface UserListAttributes extends StencilHTMLAttributes {
-    'header'?: string;
-    'users'?: firebase.firestore.DocumentData[];
+    'users'?: User[];
   }
 }
 

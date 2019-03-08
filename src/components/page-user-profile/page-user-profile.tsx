@@ -11,21 +11,17 @@ import { userSvc } from '../../services/user.service';
 export class PageUserProfile {
 	@State() user: User;
 
-	componentWillLoad() {
+	componentDidLoad() {
 		const uid = location.href.split('/')[4];
-		userSvc.getUser(uid).subscribe(snapshot => {
-			this.user = {
-				...this.user,
-				...snapshot.data()
-			};
-			console.log('user: ', this.user);
-		});
+		userSvc.getUser(uid).subscribe(data => (this.user = data));
 	}
+
 	render() {
 		return [
 			<Navbar title='User Profile' />,
 			<ion-content>
-				<h1>{this.user ? this.user.displayName : undefined}</h1>
+				<h1>{this.user ? this.user.email : undefined}</h1>
+				<p>{this.user ? this.user.uid : undefined}</p>
 			</ion-content>
 		];
 	}
