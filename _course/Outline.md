@@ -49,7 +49,7 @@
    4. Firebase user security rules
    5. Role based authorisation
    6. User List
-   7. User Profile
+   7. User Detail
    8. Update
    9. Review
 
