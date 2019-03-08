@@ -14,7 +14,7 @@ export class TabsDashboard {
 			<Navbar title='' />,
 			<ion-content>
 				{this.user ? (
-					<ion-item lines='none' detail={true} margin-top>
+					<ion-item lines='none' detail={true} margin-top href='/home/user/update'>
 						<ion-avatar>
 							<img src={this.user.photoURL} alt={this.user.displayName} />
 						</ion-avatar>

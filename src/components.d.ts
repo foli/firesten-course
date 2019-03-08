@@ -48,6 +48,13 @@ export namespace Components {
   interface PageUserProfile {}
   interface PageUserProfileAttributes extends StencilHTMLAttributes {}
 
+  interface PageUserUpdate {
+    'user': User;
+  }
+  interface PageUserUpdateAttributes extends StencilHTMLAttributes {
+    'user'?: User;
+  }
+
   interface TabsDashboard {
     'user': User;
   }
@@ -79,6 +86,7 @@ declare global {
     'PageHome': Components.PageHome;
     'PageUserList': Components.PageUserList;
     'PageUserProfile': Components.PageUserProfile;
+    'PageUserUpdate': Components.PageUserUpdate;
     'TabsDashboard': Components.TabsDashboard;
     'TabsHome': Components.TabsHome;
     'TabsRoot': Components.TabsRoot;
@@ -94,6 +102,7 @@ declare global {
     'page-home': Components.PageHomeAttributes;
     'page-user-list': Components.PageUserListAttributes;
     'page-user-profile': Components.PageUserProfileAttributes;
+    'page-user-update': Components.PageUserUpdateAttributes;
     'tabs-dashboard': Components.TabsDashboardAttributes;
     'tabs-home': Components.TabsHomeAttributes;
     'tabs-root': Components.TabsRootAttributes;
@@ -149,6 +158,12 @@ declare global {
     new (): HTMLPageUserProfileElement;
   };
 
+  interface HTMLPageUserUpdateElement extends Components.PageUserUpdate, HTMLStencilElement {}
+  var HTMLPageUserUpdateElement: {
+    prototype: HTMLPageUserUpdateElement;
+    new (): HTMLPageUserUpdateElement;
+  };
+
   interface HTMLTabsDashboardElement extends Components.TabsDashboard, HTMLStencilElement {}
   var HTMLTabsDashboardElement: {
     prototype: HTMLTabsDashboardElement;
@@ -182,6 +197,7 @@ declare global {
     'page-home': HTMLPageHomeElement
     'page-user-list': HTMLPageUserListElement
     'page-user-profile': HTMLPageUserProfileElement
+    'page-user-update': HTMLPageUserUpdateElement
     'tabs-dashboard': HTMLTabsDashboardElement
     'tabs-home': HTMLTabsHomeElement
     'tabs-root': HTMLTabsRootElement
@@ -197,6 +213,7 @@ declare global {
     'page-home': HTMLPageHomeElement;
     'page-user-list': HTMLPageUserListElement;
     'page-user-profile': HTMLPageUserProfileElement;
+    'page-user-update': HTMLPageUserUpdateElement;
     'tabs-dashboard': HTMLTabsDashboardElement;
     'tabs-home': HTMLTabsHomeElement;
     'tabs-root': HTMLTabsRootElement;

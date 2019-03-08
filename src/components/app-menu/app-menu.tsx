@@ -12,7 +12,8 @@ export class AppMenu {
 	appPages = [
 		{ title: 'Home', url: '/', icon: 'home' },
 		{ title: 'About', url: '/about', icon: 'person' },
-		{ title: 'Tabs', url: '/home', icon: 'person' }
+    { title: 'Tabs', url: '/home', icon: 'person' },
+    { title: 'Users', url: '/users', icon: 'person' },
 	];
 
 	async openAuthModal() {

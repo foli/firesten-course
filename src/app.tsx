@@ -40,6 +40,7 @@ export class App {
 
 						<ion-route url='/user' component='tabs-dashboard'>
 							<ion-route component='tabs-dashboard' componentProps={{ user: this.user }} />
+							<ion-route url='/update' component='page-user-update' componentProps={{ user: this.user }} />
 						</ion-route>
 					</ion-route>
 
