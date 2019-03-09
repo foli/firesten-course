@@ -37,6 +37,7 @@ export class PageUserUpdate {
 	}
 
 	async updateProfile() {
+		const router = document.querySelector('ion-router');
 		let payload = {
 			displayName: this.displayName || null,
 			bio: this.bio || null,
@@ -46,6 +47,7 @@ export class PageUserUpdate {
 		console.log(payload);
 		await userSvc.updateProfile(this.user.uid, payload);
 		console.log('profile has been updated');
+		return router.back();
 	}
 
 	inputHandler(event: any) {

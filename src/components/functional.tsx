@@ -7,6 +7,9 @@ interface NavBarProps {
 export const Navbar: FunctionalComponent<NavBarProps> = ({ title }) => (
 	<ion-header no-border>
 		<ion-toolbar>
+			<ion-buttons slot='start'>
+				<ion-back-button />
+			</ion-buttons>
 			<ion-title>{title}</ion-title>
 			<ion-buttons slot='end'>
 				<ion-menu-button />
