@@ -56,7 +56,7 @@
 7. Blog Module
 
    1. Intro
-   2. Create
+   2. Blog Service
    3. Add Firebase rules
    4. Image uploads
    5. Master/Detail View
