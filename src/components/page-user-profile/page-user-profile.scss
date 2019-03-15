@@ -1,3 +1,22 @@
 page-user-profile {
-    /* Component styles go here */
+	ion-grid {
+		height: 100%;
+		padding: 0;
+	}
+	ion-row {
+		align-items: center;
+		text-align: center;
+
+		height: 80%;
+		width: 100%;
+	}
+	ion-thumbnail {
+		width: 100px;
+		height: 100px;
+		margin: auto;
+		margin-bottom: 50px;
+		img {
+			border-radius: 50%;
+		}
+	}
 }

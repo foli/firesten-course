@@ -1,6 +1,5 @@
 import { Component, Prop, State } from '@stencil/core';
 import { User } from '../../interfaces/user';
-import { Navbar } from '../functional';
 import { userSvc } from '../../services/user.service';
 
 @Component({
@@ -36,8 +35,9 @@ export class PageUserUpdate {
 		userSvc.updatePhotoURL(this.user.uid, event.target.files[0]);
 	}
 
-	async updateProfile() {
-		const router = document.querySelector('ion-router');
+	async update() {
+		const modalController = document.querySelector('ion-modal-controller');
+		await modalController.componentOnReady();
 		let payload = {
 			displayName: this.displayName || null,
 			bio: this.bio || null,
@@ -47,7 +47,13 @@ export class PageUserUpdate {
 		console.log(payload);
 		await userSvc.updateProfile(this.user.uid, payload);
 		console.log('profile has been updated');
-		return router.back();
+		return modalController.dismiss();
+	}
+
+	async cancel() {
+		const modalController = document.querySelector('ion-modal-controller');
+		await modalController.componentOnReady();
+		return modalController.dismiss();
 	}
 
 	inputHandler(event: any) {
@@ -73,17 +79,14 @@ export class PageUserUpdate {
 
 	render() {
 		return [
-			<Navbar title='Update Profile' />,
-			this.uploading ? <ion-progress-bar type='indeterminate' /> : null,
+			this.uploading ? <ion-progress-bar type='indeterminate' /> : undefined,
 			<ion-content>
 				<div class='cover' />
-				<ion-button float-right fill='outline' size='small' onClick={() => this.updateProfile()}>
-					Save
-				</ion-button>
+
 				<ion-thumbnail>
 					<img
 						src={this.user ? this.user.photoURL : '/assets/images/avatar.png'}
-						alt={this.user ? this.user.displayName : null}
+						alt={this.user ? this.user.displayName : undefined}
 					/>
 					<div>
 						<label htmlFor='avatarFileInput'>
@@ -121,6 +124,18 @@ export class PageUserUpdate {
 						<ion-input name='twitter' value={this.twitter} onInput={event => this.inputHandler(event)} />
 					</ion-item>
 				</ion-list>
+				<ion-row>
+					<ion-col>
+						<ion-button expand='block' fill='outline' size='small' onClick={() => this.cancel()}>
+							Cancel
+						</ion-button>
+					</ion-col>
+					<ion-col>
+						<ion-button expand='block' fill='outline' size='small' onClick={() => this.update()}>
+							Save
+						</ion-button>
+					</ion-col>
+				</ion-row>
 			</ion-content>
 		];
 	}
